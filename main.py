@@ -123,20 +123,9 @@ async def generar_horario(request: Request):
 
     # Si no es perfecto, pipeline de sugerencias
     try:
-subprocess.run([
-    "python", str(BASE_DIR / "swap_sugerencias_horario.py"),
-    str(TMP_DIR / "horario_greedy.json"),
-    str(TMP_DIR / "materias_fuera.json"),
-    str(TMP_DIR / "sugerencias_movimientos.json")
-], check=True)
+        subprocess.run(["python", str(BASE_DIR / "swap_sugerencias_horario.py"),str(TMP_DIR / "horario_greedy.json"),str(TMP_DIR / "materias_fuera.json"),str(TMP_DIR / "sugerencias_movimientos.json")], check=True)
 
-subprocess.run([
-    "python", str(BASE_DIR / "aplicar_sugerencias_horario.py"),
-    str(TMP_DIR / "horario_greedy.json"),
-    str(TMP_DIR / "sugerencias_movimientos.json"),
-    str(TMP_DIR / "horario_greedy_aplicado.json"),
-    str(TMP_DIR / "subjects.json")
-], check=True)
+        subprocess.run(["python", str(BASE_DIR / "aplicar_sugerencias_horario.py"),str(TMP_DIR / "horario_greedy.json"),str(TMP_DIR / "sugerencias_movimientos.json"),str(TMP_DIR / "horario_greedy_aplicado.json"),str(TMP_DIR / "subjects.json")], check=True)
 
     except subprocess.CalledProcessError as e:
         return JSONResponse({"error": "Error al ejecutar scripts de sugerencias", "details": str(e)}, status_code=500)
