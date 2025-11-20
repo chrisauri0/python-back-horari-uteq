@@ -9,8 +9,11 @@ import os
 import pathlib
 
 # Paths base
-BASE_DIR = pathlib.Path(__file__).parent.resolve()
 TMP_DIR = pathlib.Path("/tmp")
+TMP_DIR.mkdir(parents=True, exist_ok=True)
+
+BASE_DIR = pathlib.Path(__file__).parent.resolve()
+
 
 app = FastAPI()
 
