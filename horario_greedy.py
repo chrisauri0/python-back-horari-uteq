@@ -1,4 +1,3 @@
-Te hago un ejemplo completo de cómo adaptarlo al inicio:
 
 import json
 import random
