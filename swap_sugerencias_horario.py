@@ -24,18 +24,20 @@ with open(horario_path, encoding='utf-8') as f:
     asignaciones = json.load(f)
 with open(materias_fuera_path, encoding='utf-8') as f:
     materias_fuera = json.load(f)
+
     
 # --- Slots ---
 SLOTS_PER_DAY = 5
 DAYS = ["Lun", "Mar", "Mie", "Jue", "Vie"]
 SLOTS = [f"{d}{17+i}" for d in DAYS for i in range(SLOTS_PER_DAY)]
-
-# --- Cargar subjects ---
-if len(sys.argv) > 1:
-    subjects_path = Path(sys.argv[1])
-    with open(subjects_path, encoding="utf-8") as f:
+# --- Cargar SUBJECTS pasado desde main.py ---
+if len(sys.argv) > 4:
+    subjects_path = Path(sys.argv[4])
+    with open(subjects_path, encoding='utf-8') as f:
         SUBJECTS = json.load(f)
 else:
+   
+
     SUBJECTS = {
         "IDGS14": [
             {"id": "administracion del tiempo", "H": 3, "rooms": ["Aula 12 edificio k"], "profs": ["Maria Guadalupe"]},
