@@ -3,25 +3,33 @@
 Script para sugerir movimientos en cascada (swap/push) para acomodar materias faltantes en el horario,
 intentando dejar el horario perfecto sin violar restricciones.
 """
+
 import json
-from collections import defaultdict
 import copy
-
-
 import sys
-# Cargar datos
-with open('horario_greedy.json', encoding='utf-8') as f:
+from pathlib import Path
+
+# --- Configuración de paths ---
+BASE_DIR = Path(__file__).parent.resolve()
+horario_path = BASE_DIR / "horario_greedy.json"
+materias_fuera_path = BASE_DIR / "materias_fuera.json"
+output_path = BASE_DIR / "sugerencias_movimientos.json"
+
+# --- Cargar datos ---
+with open(horario_path, encoding='utf-8') as f:
     asignaciones = json.load(f)
-with open('materias_fuera.json', encoding='utf-8') as f:
+with open(materias_fuera_path, encoding='utf-8') as f:
     materias_fuera = json.load(f)
 
+# --- Slots ---
 SLOTS_PER_DAY = 5
 DAYS = ["Lun", "Mar", "Mie", "Jue", "Vie"]
 SLOTS = [f"{d}{17+i}" for d in DAYS for i in range(SLOTS_PER_DAY)]
 
-# Permitir pasar la ruta de SUBJECTS como argumento
+# --- Cargar subjects ---
 if len(sys.argv) > 1:
-    with open(sys.argv[1], encoding="utf-8") as f:
+    subjects_path = Path(sys.argv[1])
+    with open(subjects_path, encoding="utf-8") as f:
         SUBJECTS = json.load(f)
 else:
     SUBJECTS = {
@@ -54,6 +62,7 @@ else:
         ]
     }
 
+# --- Funciones de validación ---
 def get_prof_room(materia, grupo):
     for subj in SUBJECTS[grupo]:
         if subj["id"] == materia:
@@ -95,12 +104,10 @@ def buscar_swap(asignaciones, grupo, materia, prof, room, slot):
     for a in asignaciones:
         if a["group"] == grupo and a["start"] == slot:
             materia_actual = a["subj"]
-            # No sugerir swap si la materia a mover es inglés
             if materia_actual.lower().startswith("ingles"):
                 continue
             prof_actual = a["prof"]
             room_actual = a["room"]
-            # Buscar otro slot donde pueda ir la materia actual
             for slot2 in SLOTS:
                 if slot2 == slot:
                     continue
@@ -116,15 +123,16 @@ def buscar_swap(asignaciones, grupo, materia, prof, room, slot):
                     }
     return None
 
+# --- Generar sugerencias ---
 def sugerir_movimientos(asignaciones, materias_fuera):
     sugerencias = []
-    sugeridas = set()  # (accion, group, materia, slot)
-    swaps_usados = set()  # (group, slot, materia_a_mover)
+    sugeridas = set()
+    swaps_usados = set()
     for falta in materias_fuera:
         grupo = falta["group"]
         materia = falta["materia"]
         prof, room = get_prof_room(materia, grupo)
-        # 1. Intentar asignar directo a un slot libre
+        # Intentar asignar directo
         for slot in SLOTS:
             clave = ("asignar_directo", grupo, materia, slot)
             if clave in sugeridas:
@@ -135,22 +143,19 @@ def sugerir_movimientos(asignaciones, materias_fuera):
                     "group": grupo,
                     "materia": materia,
                     "slot": slot,
-                    "detalle": f"Asignar '{materia}' al grupo {grupo} en el slot {slot} (directo)"
+                    "detalle": f"Asignar '{materia}' al grupo {grupo} en {slot} (directo)"
                 })
                 sugeridas.add(clave)
                 break
         else:
-            # 2. Intentar swap: buscar slot ocupado, mover la materia de ese slot a otro slot válido, y poner la materia faltante ahí
+            # Intentar swap
             for slot in SLOTS:
                 clave = ("swap", grupo, materia, slot)
-                if clave in sugeridas:
+                if clave in sugeridas or slot_libre(asignaciones, grupo, slot):
                     continue
-                if slot_libre(asignaciones, grupo, slot):
-                    continue  # Ya intentamos los libres
                 swap = buscar_swap(asignaciones, grupo, materia, prof, room, slot)
                 if swap:
                     mover_materia = swap["mover"]["materia"]
-                    # No repetir swap para la misma materia/slot
                     if (grupo, slot, mover_materia) in swaps_usados:
                         continue
                     sugerencias.append({
@@ -176,12 +181,14 @@ def sugerir_movimientos(asignaciones, materias_fuera):
                     sugeridas.add(clave)
     return sugerencias
 
+# --- Ejecutar ---
 sugerencias = sugerir_movimientos(asignaciones, materias_fuera)
 
-with open('sugerencias_movimientos.json', 'w', encoding='utf-8') as f:
+with open(output_path, 'w', encoding='utf-8') as f:
     json.dump(sugerencias, f, ensure_ascii=False, indent=4)
 
-print("Sugerencias de movimientos generadas en sugerencias_movimientos.json")
+print(f"Sugerencias generadas y guardadas en {output_path}")
+print(f"Total sugerencias: {len(sugerencias)}")
 for s in sugerencias:
     print(s["detalle"])
     if s["accion"] == "swap":

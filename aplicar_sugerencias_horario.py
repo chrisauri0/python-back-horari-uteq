@@ -7,15 +7,25 @@ generando un nuevo archivo de horario ajustado.
 import json
 import copy
 import sys
+from pathlib import Path
 
-with open('horario_greedy.json', encoding='utf-8') as f:
+# Paths base
+BASE_DIR = Path(__file__).parent.resolve()
+horario_path = BASE_DIR / "horario_greedy.json"
+sugerencias_path = BASE_DIR / "sugerencias_movimientos.json"
+output_path = BASE_DIR / "horario_greedy_aplicado.json"
+
+# Cargar archivos de entrada
+with open(horario_path, encoding='utf-8') as f:
     horario = json.load(f)
-with open('sugerencias_movimientos.json', encoding='utf-8') as f:
+
+with open(sugerencias_path, encoding='utf-8') as f:
     sugerencias = json.load(f)
 
-# Permitir pasar la ruta de SUBJECTS como argumento
+# Cargar subjects.json pasado desde main.py o usar default
 if len(sys.argv) > 1:
-    with open(sys.argv[1], encoding="utf-8") as f:
+    subjects_path = Path(sys.argv[1])
+    with open(subjects_path, encoding="utf-8") as f:
         SUBJECTS = json.load(f)
 else:
     SUBJECTS = {
@@ -48,6 +58,7 @@ else:
         ]
     }
 
+# Función para obtener profe y aula
 def get_prof_room(materia, grupo):
     for subj in SUBJECTS[grupo]:
         if subj["id"] == materia:
@@ -79,6 +90,7 @@ for sug in sugerencias:
         for a in nuevo_horario:
             if a["group"] == grupo and a["subj"] == mover["materia"] and a["start"] == mover["from"]:
                 a["start"] = mover["to"]
+                break
         # 2. Asignar la materia faltante al slot liberado
         nuevo_horario.append({
             "group": grupo,
@@ -89,7 +101,8 @@ for sug in sugerencias:
         })
     # Si es sin_solucion, no hacer nada
 
-with open('horario_greedy_aplicado.json', 'w', encoding='utf-8') as f:
+# Guardar el resultado final
+with open(output_path, 'w', encoding='utf-8') as f:
     json.dump(nuevo_horario, f, ensure_ascii=False, indent=4)
 
-print("¡Horario ajustado guardado en horario_greedy_aplicado.json!")
+print(f"¡Horario ajustado guardado en {output_path}!")

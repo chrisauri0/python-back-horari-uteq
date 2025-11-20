@@ -1,18 +1,23 @@
+Te hago un ejemplo completo de cómo adaptarlo al inicio:
 
 import json
 import random
 import sys
+from pathlib import Path
+import copy
 
 # Datos base
 SLOTS_PER_DAY = 5
 DAYS = ["Lun", "Mar", "Mie", "Jue", "Vie"]
 SLOTS = [f"{d}{17+i}" for d in DAYS for i in range(SLOTS_PER_DAY)]
 
-# Permitir pasar la ruta de SUBJECTS como argumento
+# Ruta de subjects.json pasada desde main.py
 if len(sys.argv) > 1:
-    with open(sys.argv[1], encoding="utf-8") as f:
+    subjects_path = Path(sys.argv[1])
+    with open(subjects_path, encoding="utf-8") as f:
         SUBJECTS = json.load(f)
 else:
+    subjects_path = Path("/tmp/subjects.json")
     SUBJECTS = {
         "IDGS14": [
             {"id": "administracion del tiempo", "H": 3, "rooms": ["Aula 12 edificio k"], "profs": ["Maria Guadalupe"]},
@@ -42,6 +47,10 @@ else:
             {"id": "Seguridad informatica", "H": 3, "rooms": ["Aula 12 edificio j"], "profs": ["Brandon"]},
         ]
     }
+
+OUTPUT_DIR = subjects_path.parent
+horario_greedy_path = OUTPUT_DIR / "horario_greedy.json"
+materias_fuera_path = OUTPUT_DIR / "materias_fuera.json"
 
 
 import copy
@@ -144,9 +153,9 @@ else:
     print(f'Mejor solución tiene {min_huecos} huecos tras {max_intentos} intentos.')
 
 
-with open("horario_greedy.json", "w", encoding="utf-8") as f:
+with open(horario_greedy_path, "w", encoding="utf-8") as f:
     json.dump(best_asignaciones, f, ensure_ascii=False, indent=4)
-print("¡Horario generado y guardado en horario_greedy.json!")
+print(f"¡Horario generado y guardado en {horario_greedy_path}!")
 
 # Reportar materias que quedaron fuera (horas no asignadas)
 def materias_fuera(asignaciones):
@@ -166,13 +175,17 @@ def materias_fuera(asignaciones):
 
 # Chequeo y reporte detallado de horas asignadas por materia y grupo
 fuera = materias_fuera(best_asignaciones)
+
+
+
 if fuera:
     print("Materias que quedaron fuera (horas no asignadas):")
     for f in fuera:
         print(f)
-    with open("materias_fuera.json", "w", encoding="utf-8") as fjson:
-        json.dump(fuera, fjson, ensure_ascii=False, indent=4)
-    print("También guardado en materias_fuera.json")
+    # Guardar en JSON
+    with open(materias_fuera_path, "w", encoding="utf-8") as f_json:
+        json.dump(fuera, f_json, ensure_ascii=False, indent=4)
+    print(f"También guardado en {materias_fuera_path}")
     print("ADVERTENCIA: Hay materias incompletas. Revisa el reporte arriba.")
 else:
     print("¡Todas las materias fueron asignadas completamente!")
