@@ -3,28 +3,32 @@
 Aplica automáticamente las sugerencias de movimientos y swaps al horario original,
 generando un nuevo archivo de horario ajustado.
 """
-
 import json
 import copy
 import sys
 from pathlib import Path
 
-# Paths base
-BASE_DIR = Path(__file__).parent.resolve()
-horario_path = BASE_DIR / "horario_greedy.json"
-sugerencias_path = BASE_DIR / "sugerencias_movimientos.json"
-output_path = BASE_DIR / "horario_greedy_aplicado.json"
+# --- Configuración de paths ---
+if len(sys.argv) > 3:
+    horario_path = Path(sys.argv[1])
+    sugerencias_path = Path(sys.argv[2])
+    output_path = Path(sys.argv[3])
+    subjects_path = Path(sys.argv[4]) if len(sys.argv) > 4 else None
+else:
+    BASE_DIR = Path(__file__).parent.resolve()
+    horario_path = BASE_DIR / "horario_greedy.json"
+    sugerencias_path = BASE_DIR / "sugerencias_movimientos.json"
+    output_path = BASE_DIR / "horario_greedy_aplicado.json"
+    subjects_path = None
 
-# Cargar archivos de entrada
+# --- Cargar archivos ---
 with open(horario_path, encoding='utf-8') as f:
     horario = json.load(f)
-
 with open(sugerencias_path, encoding='utf-8') as f:
     sugerencias = json.load(f)
 
-# Cargar subjects.json pasado desde main.py o usar default
-if len(sys.argv) > 1:
-    subjects_path = Path(sys.argv[1])
+# --- Cargar subjects ---
+if subjects_path and subjects_path.exists():
     with open(subjects_path, encoding="utf-8") as f:
         SUBJECTS = json.load(f)
 else:

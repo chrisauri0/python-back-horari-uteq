@@ -3,24 +3,28 @@
 Script para sugerir movimientos en cascada (swap/push) para acomodar materias faltantes en el horario,
 intentando dejar el horario perfecto sin violar restricciones.
 """
-
 import json
 import copy
 import sys
 from pathlib import Path
 
 # --- Configuración de paths ---
-BASE_DIR = Path(__file__).parent.resolve()
-horario_path = BASE_DIR / "horario_greedy.json"
-materias_fuera_path = BASE_DIR / "materias_fuera.json"
-output_path = BASE_DIR / "sugerencias_movimientos.json"
+if len(sys.argv) > 2:
+    horario_path = Path(sys.argv[1])
+    materias_fuera_path = Path(sys.argv[2])
+    output_path = Path(sys.argv[3]) if len(sys.argv) > 3 else materias_fuera_path.parent / "sugerencias_movimientos.json"
+else:
+    BASE_DIR = Path(__file__).parent.resolve()
+    horario_path = BASE_DIR / "horario_greedy.json"
+    materias_fuera_path = BASE_DIR / "materias_fuera.json"
+    output_path = BASE_DIR / "sugerencias_movimientos.json"
 
 # --- Cargar datos ---
 with open(horario_path, encoding='utf-8') as f:
     asignaciones = json.load(f)
 with open(materias_fuera_path, encoding='utf-8') as f:
     materias_fuera = json.load(f)
-
+    
 # --- Slots ---
 SLOTS_PER_DAY = 5
 DAYS = ["Lun", "Mar", "Mie", "Jue", "Vie"]
