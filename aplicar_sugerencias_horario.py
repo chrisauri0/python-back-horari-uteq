@@ -315,7 +315,7 @@ with open(output_path, 'w', encoding='utf-8') as f:
     json.dump(nuevo_horario, f, ensure_ascii=False, indent=4)
 
 
-print(f"Horario guardado en local para pruebas en {local_path}")
+
 
 
 print(f"¡Horario ajustado guardado en {output_path}!")
