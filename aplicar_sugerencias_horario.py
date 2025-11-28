@@ -33,34 +33,229 @@ if subjects_path and subjects_path.exists():
         SUBJECTS = json.load(f)
 else:
     SUBJECTS = {
-        "IDGS14": [
-            {"id": "administracion del tiempo", "H": 3, "rooms": ["Aula 12 edificio k"], "profs": ["Maria Guadalupe"]},
-            {"id": "Matematicas para ingenieria", "H": 4, "rooms": ["Aula 11 edificio k"], "profs": ["Jesus Hernan"]},
-            {"id": "Arquitectura de software", "H": 5, "rooms": ["Aula 11 edificio I"], "profs": ["Manuel"]},
-            {"id": "Ingles", "H": 4, "rooms": ["Aula 13 edificio k"], "profs": ["Profe Ingles3"]},
-            {"id": "Metodologia de desarrollo de proyectos", "H": 3, "rooms": ["SUMPA edificio k"], "profs": ["Angelica"], "min_hora": 19},
-            {"id": "Experiencia de usuario", "H": 3, "rooms": ["Aula 10 edificio j"], "profs": ["Emmanuel"]},
-            {"id": "Seguridad informatica", "H": 3, "rooms": ["Aula 12 edificio j"], "profs": ["Brandon"]},
-        ],
-        "IDGS15": [
-            {"id": "administracion del tiempo", "H": 3, "rooms": ["Aula 12 edificio k"], "profs": ["Maria Guadalupe"]},
-            {"id": "Matematicas para ingenieria", "H": 4, "rooms": ["Aula 11 edificio k"], "profs": ["Jesus Hernan"]},
-            {"id": "Arquitectura de software", "H": 5, "rooms": ["Aula 11 edificio I"], "profs": ["Manuel"]},
-            {"id": "Ingles", "H": 4, "rooms": ["Aula 13 edificio k"], "profs": ["Profe Ingles1"]},
-            {"id": "Metodologia de desarrollo de proyectos", "H": 3, "rooms": ["SUMPA edificio k"], "profs": ["Angelica"], "min_hora": 19},
-            {"id": "Experiencia de usuario", "H": 3, "rooms": ["Aula 10 edificio j"], "profs": ["Emmanuel"]},
-            {"id": "Seguridad informatica", "H": 3, "rooms": ["Aula 12 edificio j"], "profs": ["Brandon"]},
-        ],
-        "IDGS16": [
-            {"id": "administracion del tiempo", "H": 3, "rooms": ["Aula 12 edificio k"], "profs": ["Maria Guadalupe"]},
-            {"id": "Matematicas para ingenieria", "H": 4, "rooms": ["Aula 11 edificio k"], "profs": ["Jesus Hernan"]},
-            {"id": "Arquitectura de software", "H": 5, "rooms": ["Aula 11 edificio I"], "profs": ["Manuel"]},
-            {"id": "Ingles", "H": 4, "rooms": ["Aula 13 edificio k"], "profs": ["Profe Ingles2"]},
-            {"id": "Metodologia de desarrollo de proyectos", "H": 3, "rooms": ["SUMPA edificio k"], "profs": ["Angelica"], "min_hora": 19},
-            {"id": "Experiencia de usuario", "H": 3, "rooms": ["Aula 10 edificio j"], "profs": ["Emmanuel"]},
-            {"id": "Seguridad informatica", "H": 3, "rooms": ["Aula 12 edificio j"], "profs": ["Brandon"]},
-        ]
+  "IDGS15": [
+    {
+      "id": "Matematicas para Ingenieria 1",
+      "H": 4,
+      "rooms": [
+        "Salón 11 Edificio K"
+      ],
+      "profs": [
+        "Jesus Hernan Perez Vazquez"
+      ]
+    },
+    {
+      "id": "Ingles",
+      "H": 4,
+      "rooms": [
+        "Salón 13 Edificio K"
+      ],
+      "profs": [
+        "Juan josé Vazquez Rodriguez"
+      ]
+    },
+    {
+      "id": "Seguridad Informatica",
+      "H": 3,
+      "rooms": [
+        "Salón 12 Edificio J"
+      ],
+      "profs": [
+        "Brandon Efren Venegas Olvera"
+      ]
+    },
+    {
+      "id": "Experiencia de Usuario",
+      "H": 3,
+      "rooms": [
+        "Salon 11 Edificio I",
+        "Salon 11 Edificio J"
+      ],
+      "profs": [
+        "Emmanuel Martinez Hernándes"
+      ]
+    },
+    {
+      "id": "Arquitectura de software",
+      "H": 5,
+      "rooms": [
+        "Salon 12 Edificio I"
+      ],
+      "profs": [
+        "Manuel Contreras Castillo"
+      ]
+    },
+    {
+      "id": "Metodologia de desarrollo deproyectos",
+      "H": 3,
+      "rooms": [
+        "SUMPA Edificio K"
+      ],
+      "profs": [
+        "Angelica Garduño Bustamante"
+      ],
+      "min_hora": 19
+    },
+    {
+      "id": "Administración del Tiempo",
+      "H": 3,
+      "rooms": [
+        "Salón 12 Edificio K"
+      ],
+      "profs": [
+        "Maria Guadalupe Callejas Ramirez"
+      ]
     }
+  ],
+  "IDGS14": [
+    {
+      "id": "Matematicas para Ingenieria 1",
+      "H": 4,
+      "rooms": [
+        "Salón 11 Edificio K"
+      ],
+      "profs": [
+        "Jesus Hernan Perez Vazquez"
+      ]
+    },
+    {
+      "id": "Ingles",
+      "H": 4,
+      "rooms": [
+        "Salón 13 Edificio K"
+      ],
+      "profs": [
+        "profe ingles 2"
+      ]
+    },
+    {
+      "id": "Seguridad Informatica",
+      "H": 3,
+      "rooms": [
+        "Salón 12 Edificio J"
+      ],
+      "profs": [
+        "Brandon Efren Venegas Olvera"
+      ]
+    },
+    {
+      "id": "Experiencia de Usuario",
+      "H": 3,
+      "rooms": [
+        "Salon 11 Edificio I",
+        "Salon 11 Edificio J"
+      ],
+      "profs": [
+        "Emmanuel Martinez Hernándes"
+      ]
+    },
+    {
+      "id": "Arquitectura de software",
+      "H": 5,
+      "rooms": [
+        "Salon 12 Edificio I"
+      ],
+      "profs": [
+        "Manuel Contreras Castillo"
+      ]
+    },
+    {
+      "id": "Metodologia de desarrollo deproyectos",
+      "H": 3,
+      "rooms": [
+        "SUMPA Edificio K"
+      ],
+      "profs": [
+        "Angelica Garduño Bustamante"
+      ],
+      "min_hora": 19
+    },
+    {
+      "id": "Administración del Tiempo",
+      "H": 3,
+      "rooms": [
+        "Salón 12 Edificio K"
+      ],
+      "profs": [
+        "Maria Guadalupe Callejas Ramirez"
+      ]
+    }
+  ],
+  "IDGS16": [
+    {
+      "id": "Matematicas para Ingenieria 1",
+      "H": 4,
+      "rooms": [
+        "Salón 11 Edificio K"
+      ],
+      "profs": [
+        "Jesus Hernan Perez Vazquez"
+      ]
+    },
+    {
+      "id": "Ingles",
+      "H": 4,
+      "rooms": [
+        "Salón 13 Edificio K"
+      ],
+      "profs": [
+        "Profe ingles 3"
+      ]
+    },
+    {
+      "id": "Seguridad Informatica",
+      "H": 3,
+      "rooms": [
+        "Salón 12 Edificio J"
+      ],
+      "profs": [
+        "Brandon Efren Venegas Olvera"
+      ]
+    },
+    {
+      "id": "Experiencia de Usuario",
+      "H": 3,
+      "rooms": [
+        "Salon 11 Edificio I",
+        "Salon 11 Edificio J"
+      ],
+      "profs": [
+        "Emmanuel Martinez Hernándes"
+      ]
+    },
+    {
+      "id": "Arquitectura de software",
+      "H": 5,
+      "rooms": [
+        "Salon 12 Edificio I"
+      ],
+      "profs": [
+        "Manuel Contreras Castillo"
+      ]
+    },
+    {
+      "id": "Metodologia de desarrollo deproyectos",
+      "H": 3,
+      "rooms": [
+        "SUMPA Edificio K"
+      ],
+      "profs": [
+        "Angelica Garduño Bustamante"
+      ],
+      "min_hora": 19
+    },
+    {
+      "id": "Administración del Tiempo",
+      "H": 3,
+      "rooms": [
+        "Salón 12 Edificio K"
+      ],
+      "profs": [
+        "Maria Guadalupe Callejas Ramirez"
+      ]
+    }
+  ]
+}
 
 # Función para obtener profe y aula
 def get_prof_room(materia, grupo):
@@ -70,7 +265,18 @@ def get_prof_room(materia, grupo):
     return None, None
 
 nuevo_horario = copy.deepcopy(horario)
+# Función para aplicar swaps en cascada
+def aplicar_swap_cascada(asignaciones, swap):
+    mover = swap["mover"]
+    for a in asignaciones:
+        if a["group"] == mover["group"] and a["subj"] == mover["materia"] and a["start"] == mover["from"]:
+            a["start"] = mover["to"]
+            break
+    # Aplicar recursivamente cualquier cascada
+    if "cascada" in swap:
+        aplicar_swap_cascada(asignaciones, swap["cascada"])
 
+# --- Loop principal sobre sugerencias ---
 for sug in sugerencias:
     if sug["accion"] == "asignar_directo":
         grupo = sug["group"]
@@ -84,18 +290,17 @@ for sug in sugerencias:
             "room": room,
             "prof": prof
         })
+
     elif sug["accion"] == "swap":
         grupo = sug["group"]
         materia = sug["materia"]
         slot = sug["slot"]
         prof, room = get_prof_room(materia, grupo)
-        # 1. Mover la materia que estaba en ese slot al nuevo slot
-        mover = sug["swap"]["mover"]
-        for a in nuevo_horario:
-            if a["group"] == grupo and a["subj"] == mover["materia"] and a["start"] == mover["from"]:
-                a["start"] = mover["to"]
-                break
-        # 2. Asignar la materia faltante al slot liberado
+        
+        # Aplicar toda la cascada
+        aplicar_swap_cascada(nuevo_horario, sug["swap"])
+        
+        # Asignar la materia faltante al slot liberado
         nuevo_horario.append({
             "group": grupo,
             "subj": materia,
@@ -105,8 +310,12 @@ for sug in sugerencias:
         })
     # Si es sin_solucion, no hacer nada
 
-# Guardar el resultado final
+# Guardar el resultado final en la ruta que quieras
 with open(output_path, 'w', encoding='utf-8') as f:
     json.dump(nuevo_horario, f, ensure_ascii=False, indent=4)
+
+
+print(f"Horario guardado en local para pruebas en {local_path}")
+
 
 print(f"¡Horario ajustado guardado en {output_path}!")

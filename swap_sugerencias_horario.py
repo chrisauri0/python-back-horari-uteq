@@ -39,34 +39,37 @@ else:
    
 
     SUBJECTS = {
-        "IDGS14": [
-            {"id": "administracion del tiempo", "H": 3, "rooms": ["Aula 12 edificio k"], "profs": ["Maria Guadalupe"]},
-            {"id": "Matematicas para ingenieria", "H": 4, "rooms": ["Aula 11 edificio k"], "profs": ["Jesus Hernan"]},
-            {"id": "Arquitectura de software", "H": 5, "rooms": ["Aula 11 edificio I"], "profs": ["Manuel"]},
-            {"id": "Ingles", "H": 4, "rooms": ["Aula 13 edificio k"], "profs": ["Profe Ingles3"]},
-            {"id": "Metodologia de desarrollo de proyectos", "H": 3, "rooms": ["SUMPA edificio k"], "profs": ["Angelica"], "min_hora": 19},
-            {"id": "Experiencia de usuario", "H": 3, "rooms": ["Aula 10 edificio j"], "profs": ["Emmanuel"]},
-            {"id": "Seguridad informatica", "H": 3, "rooms": ["Aula 12 edificio j"], "profs": ["Brandon"]},
-        ],
-        "IDGS15": [
-            {"id": "administracion del tiempo", "H": 3, "rooms": ["Aula 12 edificio k"], "profs": ["Maria Guadalupe"]},
-            {"id": "Matematicas para ingenieria", "H": 4, "rooms": ["Aula 11 edificio k"], "profs": ["Jesus Hernan"]},
-            {"id": "Arquitectura de software", "H": 5, "rooms": ["Aula 11 edificio I"], "profs": ["Manuel"]},
-            {"id": "Ingles", "H": 4, "rooms": ["Aula 13 edificio k"], "profs": ["Profe Ingles1"]},
-            {"id": "Metodologia de desarrollo de proyectos", "H": 3, "rooms": ["SUMPA edificio k"], "profs": ["Angelica"], "min_hora": 19},
-            {"id": "Experiencia de usuario", "H": 3, "rooms": ["Aula 10 edificio j"], "profs": ["Emmanuel"]},
-            {"id": "Seguridad informatica", "H": 3, "rooms": ["Aula 12 edificio j"], "profs": ["Brandon"]},
-        ],
-        "IDGS16": [
-            {"id": "administracion del tiempo", "H": 3, "rooms": ["Aula 12 edificio k"], "profs": ["Maria Guadalupe"]},
-            {"id": "Matematicas para ingenieria", "H": 4, "rooms": ["Aula 11 edificio k"], "profs": ["Jesus Hernan"]},
-            {"id": "Arquitectura de software", "H": 5, "rooms": ["Aula 11 edificio I"], "profs": ["Manuel"]},
-            {"id": "Ingles", "H": 4, "rooms": ["Aula 13 edificio k"], "profs": ["Profe Ingles2"]},
-            {"id": "Metodologia de desarrollo de proyectos", "H": 3, "rooms": ["SUMPA edificio k"], "profs": ["Angelica"], "min_hora": 19},
-            {"id": "Experiencia de usuario", "H": 3, "rooms": ["Aula 10 edificio j"], "profs": ["Emmanuel"]},
-            {"id": "Seguridad informatica", "H": 3, "rooms": ["Aula 12 edificio j"], "profs": ["Brandon"]},
-        ]
-    }
+  "IDGS15": [
+    {"id": "Administración del Tiempo","H": 3,"rooms": ["Salón 12 Edificio K"],"profs": ["Maria Guadalupe Callejas Ramirez"]},
+    {"id": "Matematicas para Ingenieria 1","H": 4,"rooms": ["Salón 11 Edificio K"],"profs": ["Jesus Hernan Perez Vazquez"]},
+    {"id": "Arquitectura de software","H": 5,"rooms": ["Salon 12 Edificio I"],"profs": ["Manuel Contreras Castillo"]},
+    {"id": "Ingles","H": 4,"rooms": ["Salón 13 Edificio K"],"profs": ["Juan josé Vazquez Rodriguez"]},
+    {"id": "Metodologia de desarrollo de proyectos","H": 3,"rooms": ["SUMPA Edificio K"],"profs": ["Angelica Garduño Bustamante"],"min_hora": 19},
+    {"id": "Experiencia de Usuario","H": 3,"rooms": ["Salon 11 Edificio J"],"profs": ["Emmanuel Martinez Hernándes"]},
+    {"id": "Seguridad Informatica","H": 3,"rooms": ["Salón 12 Edificio J"],"profs": ["Brandon Efren Venegas Olvera"]}
+   
+  ],
+  "IDGS14": [
+    {"id": "Administración del Tiempo","H": 3,"rooms": ["Salón 12 Edificio K"],"profs": ["Maria Guadalupe Callejas Ramirez"]},
+    {"id": "Matematicas para Ingenieria 1","H": 4,"rooms": ["Salón 11 Edificio K"],"profs": ["Jesus Hernan Perez Vazquez"]},
+    {"id": "Arquitectura de software","H": 5,"rooms": ["Salon 12 Edificio I"],"profs": ["Manuel Contreras Castillo"]},
+    {"id": "Ingles","H": 4,"rooms": ["Salón 13 Edificio K"],"profs": ["profe ingles 2"]},
+    {"id": "Metodologia de desarrollo de proyectos","H": 3,"rooms": ["SUMPA Edificio K"],"profs": ["Angelica Garduño Bustamante"],"min_hora": 19},
+    {"id": "Experiencia de Usuario","H": 3,"rooms": ["Salon 11 Edificio J"],"profs": ["Emmanuel Martinez Hernándes"]},
+    {"id": "Seguridad Informatica","H": 3,"rooms": ["Salón 12 Edificio J"],"profs": ["Brandon Efren Venegas Olvera"]}
+
+  ],
+  "IDGS16": [
+    {"id": "Administración del Tiempo","H": 3,"rooms": ["Salón 12 Edificio K"],"profs": ["Maria Guadalupe Callejas Ramirez"]},
+    {"id": "Matematicas para Ingenieria 1","H": 4,"rooms": ["Salón 11 Edificio K"],"profs": ["Jesus Hernan Perez Vazquez"]},
+    {"id": "Arquitectura de software","H": 5,"rooms": ["Salon 12 Edificio I"],"profs": ["Manuel Contreras Castillo"]},
+    {"id": "Ingles","H": 4,"rooms": ["Salón 13 Edificio K"],"profs": ["profe ingles 3"]},
+    {"id": "Metodologia de desarrollo de proyectos","H": 3,"rooms": ["SUMPA Edificio K"],"profs": ["Angelica Garduño Bustamante"],"min_hora": 19},
+    {"id": "Experiencia de Usuario","H": 3,"rooms": ["Salon 11 Edificio J"],"profs": ["Emmanuel Martinez Hernándes"]},
+    {"id": "Seguridad Informatica","H": 3,"rooms": ["Salón 12 Edificio J"],"profs": ["Brandon Efren Venegas Olvera"]}
+  ]
+}
+
 
 # --- Funciones de validación ---
 def get_prof_room(materia, grupo):
@@ -94,29 +97,79 @@ def slot_libre(asignaciones, grupo, slot):
 def prof_room_libres(asignaciones, prof, room, slot):
     return not any((a["prof"] == prof or a["room"] == room) and a["start"] == slot for a in asignaciones)
 
+def get_constraints(materia, grupo):
+    for subj in SUBJECTS[grupo]:
+        if subj["id"] == materia:
+            return {
+                "prof": subj["profs"][0],
+                "room": subj["rooms"][0],
+                "min_hora": subj.get("min_hora", 17),     # defecto 17
+                "max_hora": subj.get("max_hora", 21)      # defecto 21
+            }
+    return None
+
+def hora_valida(slot, min_hora, max_hora):
+    hora = int(slot[3:])
+    return min_hora <= hora <= max_hora
+
+def materia_repetida_en_dia(asignaciones, grupo, materia, slot):
+    dia = slot[:3]
+    return any(a["group"] == grupo and a["subj"] == materia and a["start"].startswith(dia) for a in asignaciones)
+
 def puede_asignar(asignaciones, grupo, materia, prof, room, slot):
+    cons = get_constraints(materia, grupo)
+
+    # 1) hora válida
+    if not hora_valida(slot, cons["min_hora"], cons["max_hora"]):
+        return False
+
+    # 2) slot libre para ese grupo
     if not slot_libre(asignaciones, grupo, slot):
         return False
+
+    # 3) no repetir materia en el mismo día
+    if materia_repetida_en_dia(asignaciones, grupo, materia, slot):
+        return False
+
+    # 4) prof + room disponibles
     if not prof_room_libres(asignaciones, prof, room, slot):
         return False
+
+    # 5) prof no repite ese día
     if profe_ya_dio_en_dia(asignaciones, grupo, prof, slot):
         return False
+
+    # 6) máximo 2 seguidas
     if not max_2_seguidas(asignaciones, grupo, materia, slot):
         return False
+
     return True
 
+
 def buscar_swap(asignaciones, grupo, materia, prof, room, slot):
-    # Intenta mover la materia que está en ese slot a otro slot válido
+    cons = get_constraints(materia, grupo)
+
+    # No swap si este slot no cumple la hora
+    if not hora_valida(slot, cons["min_hora"], cons["max_hora"]):
+        return None
+
+    # Slot ocupado → intentar mover la materia que está ahí
     for a in asignaciones:
         if a["group"] == grupo and a["start"] == slot:
+
             materia_actual = a["subj"]
             if materia_actual.lower().startswith("ingles"):
-                continue
-            prof_actual = a["prof"]
-            room_actual = a["room"]
+                return None  # inglés no se mueve
+
+            cons2 = get_constraints(materia_actual, grupo)
+            prof_actual = cons2["prof"]
+            room_actual = cons2["room"]
+
+            # buscar un slot válido para mover la materia actual
             for slot2 in SLOTS:
                 if slot2 == slot:
                     continue
+
                 if puede_asignar(asignaciones, grupo, materia_actual, prof_actual, room_actual, slot2):
                     return {
                         "swap": True,
@@ -127,6 +180,7 @@ def buscar_swap(asignaciones, grupo, materia, prof, room, slot):
                             "to": slot2
                         }
                     }
+
     return None
 
 # --- Generar sugerencias ---
